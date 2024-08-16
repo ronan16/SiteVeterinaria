@@ -24,6 +24,16 @@ const App = () => {
       tipo: "email",
     },
     {
+      nome: "Cidade",
+      id: "cidade",
+      tipo: "text",
+    },
+    {
+      nome: "Estado",
+      id: "estado",
+      tipo: "text",
+    },
+    {
       nome: "Telefone de Contato",
       id: "fone",
       tipo: "text",
