@@ -4,12 +4,22 @@ import Menu from "./components/Menu";
 import Secao from "./components/Secao";
 import Cartao from "./components/Cartao";
 import Titulo from "./components/Titulo";
-
 import Formulario from "./components/Formulario";
-
 import "./App.css";
 
+import { collection, getDocs } from "firebase/firestore";
+import db from "./database/firebaseConfig";
+
 const App = () => {
+  //Busca todos os documentos da coleção "comentarios"
+  //e lista no console cada um dos documentos salvos
+  const lerBanco = async () => {
+    const comentarios = await getDocs(collection(db, "comentarios"));
+    comentarios.forEach((documento) => {
+      console.log(documento.data());
+    });
+  };
+
   const campos = [
     //VETOR de OBJETOS
     {
@@ -67,6 +77,7 @@ const App = () => {
         <Titulo texto="Contato" />
 
         <Formulario campos={campos} />
+        <button onClick={lerBanco}>Ler dados do Banco</button>
       </Secao>
     </div>
   );
